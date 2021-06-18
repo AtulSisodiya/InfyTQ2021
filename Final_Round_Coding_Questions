@@ -1,0 +1,151 @@
+Problem Statement 1: Given a m x n matrix inmatrix of positive integers, print an integer outnum based on the below logic: 
+
+Identify all possible sets in inmatrix that contain at least four consecutive elements of the same value val, either horizontally, vertically, or diagonally 
+If only one set of consecutive elements is identified, store the value val in outnum 
+If more than one set of consecutive elements is identified, find the smallest value and store it in outnum 
+If no set of four consecutive elements of the same value is identified either horizontally, vertically, or diagonally, print -1 
+Assumption: 
+
+m and n will be greater than 3 
+Input format: 
+
+First line will contain number of rows m of inmatrix
+The next m lines will contain the elements of inmatrix. Each line will have n elements separated by space.
+Read the input from the standard input stream. 
+Output format: 
+
+Print outnum to the standard output stream. 
+
+Code:
+
+r1=int(input())
+r2=int(input())
+
+a=[]
+b=[]
+
+for i in range(r1):
+    a.append(list(map(int,input().split())))
+    
+for i in range(r2):
+    b.append(list(map(int,input().split())))
+
+    
+c1=len(a[0])
+c2=len(b[0])
+# print(a,b,r1,c1,r2,c2)
+
+# n=max(r1,r2)
+# m=max(c1,c2)
+n=r1
+m=c1
+
+ans=[[-1]*m for _ in range(n)]
+
+for i in range(n):
+    for j in range(m):
+        temp=[]
+        if(i<r2 and j<c2):
+            temp.append(a[i][j]*b[i][j])
+        if(j<r2 and j<c2 ):
+            temp.append(a[i][j]*b[j][j])
+        if(i<r2 and i<c2 ):
+            temp.append(a[i][j]*b[i][i])
+        if(j<r2 and i<c2):
+            temp.append(a[i][j]*b[j][i])
+        
+        
+        temp.sort()
+        if(len(temp)!=0):
+            temp.sort(key=lambda x:temp.count(x))
+            ans[i][j]=temp[0]
+        
+
+for i in ans:
+    print(*i)
+    
+    
+    
+Problem Statement 2: For a given positive number num, identify the palindrome formed by performing the following operations-
+
+Add num and its reverse 
+Check whether the sum is palindrome or not. If not, add the sum and its reverse and repeat the process until a palindrome is obtained 
+For example: 
+
+If original integer is 195, we get 9,339 as the resulting palindrome after the fourth addition: 
+
+   195
+
++ 591
+
+————–
+
+   786
+
++ 687
+
+————–
+
+   1473
+
++ 3741
+
+————–
+
+   5214
+
++ 4125
+
+———-
+
+  9339
+
+Input format: 
+
+Read num from the standard input stream. 
+Output format: 
+
+Print the palindrome calculated to the standard output stream. 
+Sample Test Cases
+
+Sample Input 1
+124 
+
+Sample Output 1
+545 
+
+Explanation 1
+The sum of 124 and its reverse 421 is 545 which is a palindrome. 
+ 
+
+ 
+
+Sample input 1
+4
+
+Sample output 1
+8
+
+Explanation 1
+The sum of 4 and its reverse 4 is 8 which is a palindrome.
+
+Code:
+
+def isPalindrome(n):
+    return str(n)[::-1]==str(n)
+def rev(n):
+    return int(str(n)[::-1]) 
+n=int(input())
+while(1):
+    n=n+rev(n)
+    if(isPalindrome(n)):
+        print(n)
+        break
+        
+        
+
+    
+    
+    
+    
+ 
