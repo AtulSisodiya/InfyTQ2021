@@ -1,0 +1,151 @@
+<b>Problem Statement 1: Given two numbers N and M and an array of size N.
+A triplet is defined if it satisfies any one of the following conditions:
+
+All the numbers in the triplets are equal. [Eg, (1,1,1)]
+The numbers are consecutive. [Eg, (1, 2, 3)]
+Given the array, find the maximum number of triplets that can be formed. All elements of the array are <= M.
+
+Note: Each element of the array can only be a part of one triplet.
+
+Constraints:
+1 <= N <= 10^5
+1 <= M <= 10^4
+1 <= arr[i] <= M
+</b>
+Code:
+#include<bits/stdc++.h>
+using namespace std;
+ 
+#define int long long int
+
+signed main()
+{
+   int x,y,n,cnt=0,sum=0,N=-1;
+   cin>>x>>y;
+  int s=x+y;
+   for (int n = 1; sum < s; n++) {
+        sum += n;
+        if (sum == s)
+            {N=n;break;}
+    }
+     if(N==-1)
+     {cout<<-1;return 0;}
+    while(x-N>0)
+    {
+        x-=N;
+        N--;
+        cnt++;
+    }
+    cout<<cnt+1;
+return 0;
+}
+
+<b>Problem Statement 2:You are given a string A representing a number. The digits of the number only consists of digits 1 to 9.
+
+You are given an array F that contains a mapping for digits from 1 to 9 i.e, F[i] transforms the digit i to the value of defined in F[i].
+
+You can apply the following operation at-most 1 time:
+
+Choose a continuous segment of digits in A and replace each digit x in this segment with a digit replaced using the function F.
+What is the maximum number you can obtain in this manner? Since the number can be large, output it modulo 10^9 + 7.
+
+Constraints:
+1 <= len(A) <= 10^5
+1 <= F[i] <= 9
+</b>
+Code:
+#include<bits/stdc++.h>
+using namespace std;
+ 
+signed main()
+{
+  string str;
+  cin>>str;
+  map<int,int>mp;
+  for(int i=1;i<=9;i++)
+  {
+      int x;
+      cin>>x;
+      mp[i]=x;
+  }
+  int i=0;
+  while(i<str.length()&&str[i]-'0'>=mp[str[i]-'0'])
+  {
+      i++;
+  }
+  while(i<str.length()&&str[i]-'0'<mp[str[i]-'0'])
+   {
+       str[i]=mp[str[i]-'0']+'0';
+       i++;
+   }
+   cout<<str;
+return 0;
+}
+
+<b>Problem Statement 3:There is a bag which is full of N numbers from 1 to N. Now your friend decided to split these numbers into 2 other bags (not necessarily equally).
+
+He tells you the sum of numbers in Bag 1 as X and the sum of numbers in Bag 2 as Y.
+
+Your task is to determine the minimum possible count of numbers in Bag 1 whose sum is X? If the scenario is no possible, return -1.
+
+Constraints:
+1 <= X <= 10^9
+1 <= Y <= 10^9
+
+Sample input 1 : X = 12, Y = 3
+output : 3
+
+Sample input 2 : X = 5, Y = 7
+output : -1
+
+</b>
+
+Code:
+#include<bits/stdc++.h>
+using namespace std;
+#define ll int64_t
+#define all(x)  x.begin(),x.end()
+
+int main()
+{ 
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	
+	int n;
+	cin>>n;
+	int m;
+	cin>>m;
+	
+	
+	vector<int>a(n);
+	
+	for(auto &z:a) cin>>z;
+	
+	 map<int,int>mp;
+	 for(auto z:a) mp[z]++;
+	 
+	 int ans=0;
+	 for(auto z:mp)
+	 {
+	 	     
+	 	      int v=z.first;
+	 	      
+	 	      if(mp[v]>=1 and mp[v+1]>=1 and mp[v+2]>=1)
+	 	      {
+	 	      	   ans++;
+	 	      	   mp[v]-=1;
+	 	      	   mp[v+1]-=1;
+	 	      	   mp[v+2]-=1;
+	 	      }
+	 	      
+	 	      ans+=mp[v]/3;
+	 	      mp[v]=0;
+	 	    
+	 }
+	 
+	 cout<<ans<<endl;
+	 
+  
+}
+
+
