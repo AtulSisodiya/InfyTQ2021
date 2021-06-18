@@ -1,4 +1,4 @@
-<b>Problem Statement 1: Given two numbers N and M and an array of size N.
+Problem Statement 1: Given two numbers N and M and an array of size N.
 A triplet is defined if it satisfies any one of the following conditions:
 
 All the numbers in the triplets are equal. [Eg, (1,1,1)]
@@ -11,7 +11,7 @@ Constraints:
 1 <= N <= 10^5
 1 <= M <= 10^4
 1 <= arr[i] <= M
-</b>
+
 Code:
 #include<bits/stdc++.h>
 using namespace std;
@@ -40,7 +40,7 @@ signed main()
 return 0;
 }
 
-<b>Problem Statement 2:You are given a string A representing a number. The digits of the number only consists of digits 1 to 9.
+Problem Statement 2:You are given a string A representing a number. The digits of the number only consists of digits 1 to 9.
 
 You are given an array F that contains a mapping for digits from 1 to 9 i.e, F[i] transforms the digit i to the value of defined in F[i].
 
@@ -52,7 +52,7 @@ What is the maximum number you can obtain in this manner? Since the number can b
 Constraints:
 1 <= len(A) <= 10^5
 1 <= F[i] <= 9
-</b>
+
 Code:
 #include<bits/stdc++.h>
 using namespace std;
@@ -82,7 +82,7 @@ signed main()
 return 0;
 }
 
-<b>Problem Statement 3:There is a bag which is full of N numbers from 1 to N. Now your friend decided to split these numbers into 2 other bags (not necessarily equally).
+Problem Statement 3:There is a bag which is full of N numbers from 1 to N. Now your friend decided to split these numbers into 2 other bags (not necessarily equally).
 
 He tells you the sum of numbers in Bag 1 as X and the sum of numbers in Bag 2 as Y.
 
@@ -98,7 +98,6 @@ output : 3
 Sample input 2 : X = 5, Y = 7
 output : -1
 
-</b>
 
 Code:
 #include<bits/stdc++.h>
